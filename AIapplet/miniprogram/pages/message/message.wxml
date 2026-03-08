@@ -1,0 +1,24 @@
+<view class="container">
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{messageList.length === 0}}">
+    <text class="empty-icon">💬</text>
+    <text class="empty-text">目前还没有消息哦</text>
+  </view>
+
+  <!-- 消息列表 -->
+  <view wx:else>
+    <view class="msg-list">
+      <view class="msg-card card" wx:for="{{messageList}}" wx:key="id">
+        <view class="msg-avatar">{{item.name.slice(0,1)}}</view>
+        <view class="msg-content">
+          <view class="msg-header">
+            <text class="name">{{item.name}}</text>
+            <text class="time">{{item.time}}</text>
+          </view>
+          <text class="last-msg">{{item.lastMsg}}</text>
+        </view>
+        <view class="unread" wx:if="{{item.unread > 0}}">{{item.unread}}</view>
+      </view>
+    </view>
+  </view>
+</view>

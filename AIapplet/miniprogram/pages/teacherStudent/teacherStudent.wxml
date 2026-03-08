@@ -1,0 +1,66 @@
+<view class="container">
+  <!-- 顶部切换+搜索+筛选 -->
+  <view class="top-bar">
+    <view class="tab-switch">
+      <text class="tab-item {{currentTab === 'parent' ? 'active' : ''}}" bindtap="switchTab" data-tab="parent">学员</text>
+      <text class="tab-item {{currentTab === 'teacher' ? 'active' : ''}}" bindtap="switchTab" data-tab="teacher">教员</text>
+    </view>
+    <view class="search-box">
+      <input placeholder="搜索科目/院校/区域" bindinput="onSearch" />
+    </view>
+    <button class="filter-btn" bindtap="openFilter">筛选</button>
+  </view>
+
+  <!-- 学员需求列表 -->
+  <view wx:if="{{currentTab === 'parent'}}">
+    <view class="parent-list">
+      <view class="parent-card card" wx:for="{{parentList}}" wx:key="id">
+        <view class="parent-header">
+          <text class="name">{{item.studentName}} | {{item.grade}}</text>
+          <text class="time">{{item.publishTime}}</text>
+        </view>
+        <view class="demand">辅导需求：{{item.subject}} | {{item.area}}</view>
+        <view class="desc">{{item.desc}}</view>
+        <view class="card-footer">
+          <text class="price">预算：¥{{item.price}}/小时</text>
+          <button class="btn-primary" size="mini">立即申请</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 教员列表 -->
+  <view wx:if="{{currentTab === 'teacher'}}">
+    <view class="teacher-list">
+      <view class="teacher-card card" wx:for="{{teacherList}}" wx:key="id">
+        <view class="teacher-left">
+          <view class="avatar">{{item.name.slice(0,1)}}</view>
+        </view>
+        <view class="teacher-right">
+          <view class="teacher-header">
+            <text class="name">{{item.name}}</text>
+            <text class="school">{{item.school}}</text>
+          </view>
+          <view class="tag-row">
+            <text class="tag">{{item.subject}}</text>
+            <text class="tag">{{item.area}}</text>
+            <text class="tag">好评率{{item.rate}}%</text>
+          </view>
+          <view class="desc">可授年级：{{item.grade}} | {{item.exp}}</view>
+          <view class="card-footer">
+            <text class="price">¥{{item.price}}/小时</text>
+            <view class="btn-group">
+              <button class="btn-line" size="mini" bindtap="goChat">私信</button>
+              <button class="btn-primary" size="mini">立即预约</button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 固定悬浮窗 -->
+  <view class="float-btn" bindtap="goPublish">
+    <text>{{currentTab === 'parent' ? '我要请家教' : '我要做教员'}}</text>
+  </view>
+</view>

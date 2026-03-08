@@ -1,0 +1,75 @@
+.container {
+  min-height: 100vh;
+}
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  padding-top: 120px;
+}
+.empty-icon {
+  font-size: 60px;
+  display: block;
+  margin-bottom: 20px;
+  opacity: 0.3;
+}
+.empty-text {
+  font-size: 16px;
+  color: #999;
+}
+
+/* 消息卡片 */
+.msg-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  margin: 0;
+  border-bottom: 1px solid #f0f0f0;
+  border-radius: 0;
+}
+.msg-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #1677ff;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.msg-content {
+  flex: 1;
+}
+.msg-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.msg-header .name {
+  font-size: 16px;
+  font-weight: 500;
+}
+.msg-header .time {
+  font-size: 12px;
+  color: #999;
+}
+.last-msg {
+  font-size: 14px;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.unread {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ff4d4f;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  flex-shrink: 0;
+}
