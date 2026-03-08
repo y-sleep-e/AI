@@ -1,0 +1,54 @@
+<view class="container">
+  <!-- 对话列表 -->
+  <scroll-view class="chat-list" scroll-y="true" scroll-into-view="{{lastId}}">
+    <view wx:for="{{chatList}}" wx:key="index" id="item-{{index}}">
+      <!-- AI回复 -->
+      <view class="msg-item ai-msg" wx:if="{{item.role === 'ai'}}">
+        <view class="msg-avatar">🤖</view>
+        <view class="msg-content">
+          <view class="msg-text">{{item.content}}</view>
+          <!-- 匹配的教员卡片 -->
+          <view class="match-teacher" wx:if="{{item.teachers && item.teachers.length > 0}}">
+            <view class="teacher-card" wx:for="{{item.teachers}}" wx:key="id" wx:for-item="teacher">
+              <view class="teacher-info">
+                <text class="name">{{teacher.name}} | {{teacher.school}}</text>
+                <text class="subject">{{teacher.subject.join('、')}} | {{teacher.area}}</text>
+              </view>
+              <button class="btn-primary" size="mini">查看详情</button>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 用户消息 -->
+      <view class="msg-item user-msg" wx:if="{{item.role === 'user'}}">
+        <view class="msg-content">
+          <view class="msg-text">{{item.content}}</view>
+        </view>
+        <view class="msg-avatar">👤</view>
+      </view>
+    </view>
+
+    <!-- 加载状态 -->
+    <view class="loading" wx:if="{{isLoading}}">
+      <text>AI正在思考中...</text>
+    </view>
+  </scroll-view>
+
+  <!-- 快捷问题 -->
+  <view class="quick-question" wx:if="{{chatList.length === 0}}">
+    <text class="quick-title">常见问题</text>
+    <view class="quick-list">
+      <text class="quick-item" bindtap="sendQuickMsg" data-msg="怎么找合适的家教老师？">怎么找合适的家教老师？</text>
+      <text class="quick-item" bindtap="sendQuickMsg" data-msg="平台怎么收费？">平台怎么收费？</text>
+      <text class="quick-item" bindtap="sendQuickMsg" data-msg="教员入驻有什么要求？">教员入驻有什么要求？</text>
+      <text class="quick-item" bindtap="sendQuickMsg" data-msg="高中数学老师推荐">高中数学老师推荐</text>
+    </view>
+  </view>
+
+  <!-- 输入框 -->
+  <view class="input-bar">
+    <input placeholder="请输入你的问题" value="{{inputVal}}" bindinput="onInput" confirm-type="send" bindconfirm="sendMsg" />
+    <button class="send-btn" bindtap="sendMsg" disabled="{{isLoading}}">发送</button>
+  </view>
+</view>

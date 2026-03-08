@@ -1,0 +1,151 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f5f7fa;
+}
+
+/* 对话列表 */
+.chat-list {
+  flex: 1;
+  padding: 16px 12px;
+}
+.msg-item {
+  display: flex;
+  margin-bottom: 20px;
+  max-width: 85%;
+}
+.ai-msg {
+  align-self: flex-start;
+}
+.user-msg {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+  margin-left: auto;
+}
+.msg-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 36px;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.ai-msg .msg-avatar {
+  margin-right: 10px;
+  background: #e8f3ff;
+}
+.user-msg .msg-avatar {
+  margin-left: 10px;
+  background: #1677ff;
+}
+.msg-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.msg-text {
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  word-break: break-all;
+}
+.ai-msg .msg-text {
+  background: white;
+  color: #333;
+  border-top-left-radius: 2px;
+}
+.user-msg .msg-text {
+  background: #1677ff;
+  color: white;
+  border-top-right-radius: 2px;
+}
+
+/* 匹配教员卡片 */
+.match-teacher {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.match-teacher .teacher-card {
+  background: white;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.teacher-info .name {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.teacher-info .subject {
+  font-size: 12px;
+  color: #666;
+}
+
+/* 加载状态 */
+.loading {
+  text-align: center;
+  color: #999;
+  font-size: 13px;
+  margin: 10px 0;
+}
+
+/* 快捷问题 */
+.quick-question {
+  padding: 0 16px 20px;
+}
+.quick-title {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+  display: block;
+}
+.quick-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.quick-item {
+  padding: 6px 12px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  font-size: 13px;
+  color: #333;
+}
+
+/* 输入框 */
+.input-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: white;
+  border-top: 1px solid #f0f0f0;
+}
+.input-bar input {
+  flex: 1;
+  background: #f5f7fa;
+  border-radius: 20px;
+  height: 40px;
+  padding: 0 14px;
+  font-size: 15px;
+}
+.send-btn {
+  width: 60px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  font-size: 14px;
+  border-radius: 20px;
+}
+.send-btn[disabled] {
+  background: #ccc;
+}

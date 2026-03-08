@@ -1,0 +1,70 @@
+<view class="container">
+  <!-- 个人信息头部 -->
+  <view class="header">
+    <view class="user-avatar">👤</view>
+    <view class="user-info">
+      <view class="username">{{userInfo.nickName || '点击登录'}}</view>
+      <view class="role-switch">
+        <text>当前角色：{{userRole === 'parent' ? '家长' : '教员'}}</text>
+        <button size="mini" bindtap="switchRole">切换角色</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 会员入口 -->
+  <view class="vip-card card" bindtap="goVip">
+    <view class="vip-left">
+      <text class="vip-title">我的会员</text>
+      <text class="vip-desc">享优先匹配、抽成减免、专属曝光</text>
+    </view>
+    <text class="vip-arrow">></text>
+  </view>
+
+  <!-- 功能列表 -->
+  <view class="menu-list">
+    <!-- 教员专属功能 -->
+    <view class="menu-group card" wx:if="{{userRole === 'teacher'}}">
+      <view class="menu-item" bindtap="goTeacherRegister">
+        <text class="menu-icon">📝</text>
+        <text class="menu-name">我的教员注册</text>
+        <text class="menu-arrow">></text>
+      </view>
+      <view class="menu-item">
+        <text class="menu-icon">📊</text>
+        <text class="menu-name">我的接单</text>
+        <text class="menu-arrow">></text>
+      </view>
+    </view>
+
+    <!-- 家长专属功能 -->
+    <view class="menu-group card" wx:if="{{userRole === 'parent'}}">
+      <view class="menu-item" bindtap="goDemand">
+        <text class="menu-icon">📋</text>
+        <text class="menu-name">我的家教需求</text>
+        <text class="menu-arrow">></text>
+      </view>
+      <view class="menu-item">
+        <text class="menu-icon">📅</text>
+        <text class="menu-name">我的预约</text>
+        <text class="menu-arrow">></text>
+      </view>
+    </view>
+
+    <!-- 通用功能 -->
+    <view class="menu-group card">
+      <view class="menu-item" bindtap="goAbout">
+        <text class="menu-icon">ℹ️</text>
+        <text class="menu-name">关于我们</text>
+        <text class="menu-arrow">></text>
+      </view>
+      <view class="menu-item">
+        <text class="menu-icon">⚙️</text>
+        <text class="menu-name">设置</text>
+        <text class="menu-arrow">></text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <button class="logout-btn" bindtap="logout">退出登录</button>
+</view>

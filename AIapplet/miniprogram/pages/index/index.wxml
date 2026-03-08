@@ -1,0 +1,47 @@
+<view class="container">
+  <!-- 顶部定位+标题 -->
+  <view class="header">
+    <view class="location">
+      <text>📍 北京</text>
+    </view>
+    <view class="title">学途智配</view>
+    <view class="subtitle">AI赋能大学生家教精准匹配平台</view>
+  </view>
+
+  <!-- 核心功能入口 -->
+  <view class="entrance-card card">
+    <view class="entrance-row">
+      <view class="entrance-item" bindtap="goToParent">
+        <view class="entrance-icon">👨‍👩‍👧</view>
+        <text>我要请家教</text>
+        <text class="entrance-desc">发布需求，快速匹配</text>
+      </view>
+      <view class="entrance-item" bindtap="goToTeacher">
+        <view class="entrance-icon">📚</view>
+        <text>我要做教员</text>
+        <text class="entrance-desc">注册认证，入驻接单</text>
+      </view>
+    </view>
+    <view class="entrance-full" bindtap="goToAI">
+      <view class="entrance-icon">🤖</view>
+      <text>我要问AI</text>
+      <text class="entrance-desc">学习难题一键解答，家教需求智能分析</text>
+    </view>
+  </view>
+
+  <!-- 优质教员推荐 -->
+  <view class="teacher-section">
+    <view class="section-title">优质教员推荐</view>
+    <scroll-view class="teacher-scroll" scroll-x="true">
+      <view class="teacher-card" wx:for="{{teacherList}}" wx:key="id">
+        <view class="teacher-avatar">{{item.name.slice(0,1)}}</view>
+        <view class="teacher-name">{{item.name}}</view>
+        <view class="teacher-school">{{item.school}}</view>
+        <view class="teacher-subject">{{item.subject}}</view>
+        <view class="teacher-tag">好评率{{item.rate}}% | 已接单{{item.orderNum}}</view>
+        <view class="teacher-price">¥{{item.price}}/小时</view>
+        <button class="btn-primary teacher-btn" size="mini">立即预约</button>
+      </view>
+    </scroll-view>
+  </view>
+</view>
